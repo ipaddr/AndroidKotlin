@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_kotlin"
+    app:startDestination="@id/transferFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.androidkotlin.MainFragment"
+        android:label="MainFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.androidkotlin.day1.ui.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/cekSaldoFragment"
+        android:name="com.example.androidkotlin.day1.ui.CekSaldoFragment"
+        android:label="CekSaldoFragment" />
+    <fragment
+        android:id="@+id/transferFragment"
+        android:name="com.example.androidkotlin.day1.ui.TransferFragment"
+        android:label="TransferFragment" />
+</navigation>
