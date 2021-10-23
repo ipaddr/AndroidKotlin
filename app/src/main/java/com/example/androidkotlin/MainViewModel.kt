@@ -1,20 +1,37 @@
 package com.example.androidkotlin
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.example.androidkotlin.day1.practice.data.LoginInfo
 import com.example.androidkotlin.day1.practice.data.User
 
-class MainViewModel: ViewModel() {
+class MainViewModel(): ViewModel() {
+
     var text: String = "Selamat datang, silahkan login untuk mengguanakan fitur aplikasi ini!"
-    var user: User? = User(username = "user", password = "123456")
+    var user: User? = User(username = "user", password = "pass")
+
 
     //region login
-    var loginMessage = MutableLiveData<String>()
+    var loginInfo = MutableLiveData<LoginInfo>(LoginInfo(false, ""))
     fun login(){
-        // login will add data to sharedpref
-        loginMessage.postValue("login function execute, " +
-                "data cointain user ${user?.username}, passwprd as ${user?.password}")
+        if (user?.username.equals("user") && user?.password.equals("pass")){
+            val message = "login success, " +
+                    "data cointain user ${user?.username}, passwprd as ${user?.password}"
+            val result = LoginInfo(true, message)
+            loginInfo.value = result
+
+        } else {
+            val message = "login fail, " +
+                    "data cointain user ${user?.username}, password as ${user?.password}"
+            val result = LoginInfo(false, message)
+            loginInfo.value = result
+        }
     }
+    //endregion
+
+    //region cek saldo
+    var saldo: String? = "0.0"
     //endregion
 
     // region fragment transfer

@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/cek_saldo"
+        android:id="@+id/cekSaldoFragment"
         android:title="Cek Saldo" />
     <item
-        android:id="@+id/transfer"
+        android:id="@+id/transferFragment"
         android:title="Transfer" />
 </menu>
