@@ -1,4 +1,4 @@
-package com.example.androidkotlin.day1.ui
+package com.example.androidkotlin.day1.practice.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.androidkotlin.MainViewModel
 import com.example.androidkotlin.databinding.FragmentLoginBinding
-import com.example.androidkotlin.databinding.FragmentMainBinding
 
 class LoginFragment: Fragment() {
     private lateinit var binding: FragmentLoginBinding

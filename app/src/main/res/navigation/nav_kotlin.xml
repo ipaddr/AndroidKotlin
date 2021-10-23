@@ -10,14 +10,14 @@
         android:label="MainFragment" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.androidkotlin.day1.ui.LoginFragment"
+        android:name="com.example.androidkotlin.day1.practice.ui.LoginFragment"
         android:label="LoginFragment" />
     <fragment
         android:id="@+id/cekSaldoFragment"
-        android:name="com.example.androidkotlin.day1.ui.CekSaldoFragment"
+        android:name="com.example.androidkotlin.day1.practice.ui.CekSaldoFragment"
         android:label="CekSaldoFragment" />
     <fragment
         android:id="@+id/transferFragment"
-        android:name="com.example.androidkotlin.day1.ui.TransferFragment"
+        android:name="com.example.androidkotlin.day1.practice.ui.TransferFragment"
         android:label="TransferFragment" />
 </navigation>

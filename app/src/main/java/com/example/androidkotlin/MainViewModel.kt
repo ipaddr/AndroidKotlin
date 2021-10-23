@@ -1,10 +1,8 @@
 package com.example.androidkotlin
 
-import androidx.databinding.ObservableField
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.androidkotlin.day1.data.User
+import com.example.androidkotlin.day1.practice.data.User
 
 class MainViewModel: ViewModel() {
     var text: String = "Selamat datang, silahkan login untuk mengguanakan fitur aplikasi ini!"

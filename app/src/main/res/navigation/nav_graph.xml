@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigationComponentMainFragmen">
+    <fragment
+        android:id="@+id/navigationComponentMainFragmen"
+        android:name="com.example.navigationcomponent.NavigationComponentMainFragment"
+        android:label="NavigationComponentMainFragmen" >
+        <action
+            android:id="@+id/action_navigationComponentMainFragmen_to_firstFragment"
+            app:destination="@id/firstFragment" />
+        <action
+            android:id="@+id/action_navigationComponentMainFragmen_to_secondFragment"
+            app:destination="@id/secondFragment" />
+        <action
+            android:id="@+id/action_navigationComponentMainFragmen_to_bankingFragment"
+            app:destination="@id/bankingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.navigationcomponent.FirstFragment"
+        android:label="FirstFragment" >
+        <action
+            android:id="@+id/action_firstFragment_to_firstDotFirstFragment"
+            app:destination="@id/firstDotFirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.example.navigationcomponent.SecondFragment"
+        android:label="SecondFragment" >
+        <action
+            android:id="@+id/action_secondFragment_to_secondDotSecondFragment"
+            app:destination="@id/secondDotSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bankingFragment"
+        android:name="com.example.navigationcomponent.BankingFragment"
+        android:label="BankingFragment" >
+        <action
+            android:id="@+id/action_bankingFragment_to_choseRecepientFragment"
+            app:destination="@id/choseRecepientFragment" />
+        <action
+            android:id="@+id/action_bankingFragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstDotFirstFragment"
+        android:name="com.example.navigationcomponent.FirstDotFirstFragment"
+        android:label="FirstDotFirstFragment" />
+    <fragment
+        android:id="@+id/secondDotSecondFragment"
+        android:name="com.example.navigationcomponent.SecondDotSecondFragment"
+        android:label="SecondDotSecondFragment" />
+    <fragment
+        android:id="@+id/choseRecepientFragment"
+        android:name="com.example.navigationcomponent.ChoseRecepientFragment"
+        android:label="ChoseRecepientFragment" >
+        <action
+            android:id="@+id/action_choseRecepientFragment_to_chooseAmountFragment"
+            app:destination="@id/chooseAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseAmountFragment"
+        android:name="com.example.navigationcomponent.ChooseAmountFragment"
+        android:label="ChooseAmountFragment" />
+    <fragment
+        android:id="@+id/viewBalanceFragment"
+        android:name="com.example.navigationcomponent.ViewBalanceFragment"
+        android:label="ViewBalanceFragment" />
+</navigation>

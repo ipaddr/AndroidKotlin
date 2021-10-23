@@ -1,4 +1,4 @@
-package com.example.androidkotlin.day1.ui
+package com.example.androidkotlin.day1.practice.ui
 
 import android.os.Bundle
 import android.view.View
