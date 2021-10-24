@@ -20,4 +20,7 @@
     <item
         android:id="@+id/animationFragment"
         android:title="Animation"/>
+    <item
+        android:id="@+id/customCircleFragment"
+        android:title="Circle Fragment"/>
 </menu>

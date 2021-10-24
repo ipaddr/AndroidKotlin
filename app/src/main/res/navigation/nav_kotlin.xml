@@ -41,4 +41,8 @@
         android:id="@+id/animationFragment"
         android:name="com.example.androidkotlin.day2.animation.AnimationFragment"
         android:label="AnimationFragment" />
+    <fragment
+        android:id="@+id/customCircleFragment"
+        android:name="com.example.androidkotlin.day2.practice.CustomCircleFragment"
+        android:label="CustomCircleFragment" />
 </navigation>
