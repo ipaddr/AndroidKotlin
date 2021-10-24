@@ -41,13 +41,15 @@ class AnimationFragment : Fragment() {
     }
 
     private fun rotate(){
-        val animator = ObjectAnimator.ofFloat(binding.imageView, View.ROTATION, -360f, 0f)
+        val animator = ObjectAnimator
+            .ofFloat(binding.imageView, View.ROTATION, -360f, 0f)
         animator.duration = 1000
         animator.start()
     }
 
     private fun translate(){
-        val animator = ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, 200f)
+        val animator = ObjectAnimator
+            .ofFloat(binding.imageView, View.TRANSLATION_X, 200f)
         animator.repeatCount = 3
         animator.repeatMode = ObjectAnimator.REVERSE
         animator.start()
@@ -55,16 +57,20 @@ class AnimationFragment : Fragment() {
 
     private fun scaling(){
         val scaleSize = 0.3f
-        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, scaleSize)
-        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, scaleSize)
-        val animator = ObjectAnimator.ofPropertyValuesHolder(binding.imageView, scaleX, scaleY)
+        val scaleX = PropertyValuesHolder
+            .ofFloat(View.SCALE_X, scaleSize)
+        val scaleY = PropertyValuesHolder
+            .ofFloat(View.SCALE_Y, scaleSize)
+        val animator = ObjectAnimator
+            .ofPropertyValuesHolder(binding.imageView, scaleX, scaleY)
         animator.repeatCount = 5
         animator.repeatMode = ObjectAnimator.REVERSE
         animator.start()
     }
 
     private fun fader(){
-        val animator = ObjectAnimator.ofFloat(binding.imageView, View.ALPHA, 0f)
+        val animator = ObjectAnimator
+            .ofFloat(binding.imageView, View.ALPHA, 0f)
         animator.repeatCount = 3
         animator.repeatMode = ObjectAnimator.REVERSE
         animator.start()
