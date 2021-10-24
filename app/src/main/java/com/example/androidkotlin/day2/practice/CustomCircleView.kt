@@ -28,18 +28,27 @@ class CustomCircleView@JvmOverloads constructor(
 
     //getting attributes specified in xml
     init {
-
+        context.withStyledAttributes(attrs, R.styleable.CustomCircleView) {
+            circleColor = getColor(R.styleable.CustomCircleView_circleColor, Color.YELLOW)
+            borderColor = getColor(R.styleable.CustomCircleView_borderCircleColor, Color.BLACK)
+            borderWidth = getFloat(R.styleable.CustomCircleView_borderCircleWidth, 2F)
+        }
     }
 
     // calcualte halfHeight, halfWidth, radius
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-
+        halfHeight = measuredHeight / 2
+        halfWidth = measuredWidth / 2
+        radius = halfHeight.coerceAtMost(halfWidth) - borderWidth.toInt()
     }
 
     // draw circle and border
     override fun onDraw(canvas: Canvas) {
         //drawing the circle
-
+        paint.apply { color = circleColor; style = Paint.Style.FILL }
+        canvas.drawCircle(halfWidth.toFloat(), halfHeight.toFloat(), radius.toFloat(), paint)
         //drawing circle border
+        paint.apply { color = borderColor; style = Paint.Style.STROKE; strokeWidth = borderWidth}
+        canvas.drawCircle(halfWidth.toFloat(), halfHeight.toFloat(), radius.toFloat(), paint)
     }
 }

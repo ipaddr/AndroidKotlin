@@ -5,4 +5,9 @@
         <attr name="volColor2" format="color"/>
         <attr name="volColor3" format="color"/>
     </declare-styleable>
+    <declare-styleable name="CustomCircleView">
+        <attr name="circleColor" format="color"/>
+        <attr name="borderCircleColor" format="color"/>
+        <attr name="borderCircleWidth" format="float"/>
+    </declare-styleable>
 </resources>
