@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.example.androidkotlin.MainFragment
 import com.example.androidkotlin.MainViewModel
 import com.example.androidkotlin.R
@@ -21,7 +22,7 @@ import java.util.*
 class CekSaldoFragment: Fragment(){
 
     private lateinit var binding: FragmentCekSaldoBinding
-    val viewModel: MainViewModel by activityViewModels()
+    val viewModel: MainViewModel by navGraphViewModels(R.id.nav_kotlin)
 
     override fun onCreateView(
         inflater: LayoutInflater,

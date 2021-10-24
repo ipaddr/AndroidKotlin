@@ -11,12 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.example.androidkotlin.MainViewModel
+import com.example.androidkotlin.R
 import com.example.androidkotlin.databinding.FragmentLoginBinding
 
 class LoginFragment: Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by navGraphViewModels(R.id.nav_kotlin)
 
     override fun onCreateView(
         inflater: LayoutInflater,

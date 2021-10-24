@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_kotlin"
     app:startDestination="@id/mainFragment">
-
+    <include app:graph="@navigation/nav_hello_world"/>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.androidkotlin.MainFragment"
@@ -27,4 +27,8 @@
         android:id="@+id/transferFragment"
         android:name="com.example.androidkotlin.day1.practice.ui.TransferFragment"
         android:label="TransferFragment" />
+    <include-dynamic
+        android:id="@+id/navDynamic"
+        app:moduleName="dynamicfeature"
+        app:graphResName="nav_dynamic"/>
 </navigation>

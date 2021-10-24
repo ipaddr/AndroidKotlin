@@ -9,12 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.example.androidkotlin.databinding.FragmentMainBinding
 
 
 open class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
-    val viewModel: MainViewModel by activityViewModels()
+    val viewModel: MainViewModel by navGraphViewModels(R.id.nav_kotlin)
 
     override fun onCreateView(
         inflater: LayoutInflater,

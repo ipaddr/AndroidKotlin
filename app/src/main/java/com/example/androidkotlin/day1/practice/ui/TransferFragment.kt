@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.example.androidkotlin.MainViewModel
 import com.example.androidkotlin.R
 import com.example.androidkotlin.databinding.FragmentTransferBinding
@@ -18,7 +19,7 @@ import com.example.androidkotlin.databinding.FragmentTransferBinding
 class TransferFragment: Fragment() {
 
     private lateinit var binding: FragmentTransferBinding
-    val viewModel: MainViewModel by activityViewModels()
+    val viewModel: MainViewModel by navGraphViewModels(R.id.nav_kotlin)
 
     override fun onCreateView(
         inflater: LayoutInflater,

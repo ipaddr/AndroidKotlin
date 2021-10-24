@@ -32,6 +32,7 @@ class NavigationComponentActivity: AppCompatActivity() {
 
         staticNavigation()
         //dynamicNavigation()
+        //navHostFragmentProgramatically()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -87,6 +88,14 @@ class NavigationComponentActivity: AppCompatActivity() {
             fragment<ChoseRecepientFragment>(Constant.nav_routes.CHOOSE_RECEPIENT_FRAGMENT)
             fragment<ViewBalanceFragment>(Constant.nav_routes.VIEW_BALANCE_FRAGMENT)
         }
+    }
+
+    private fun navHostFragmentProgramatically(){
+        val finalHost = NavHostFragment.create(R.navigation.nav_graph)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, finalHost)
+            .setPrimaryNavigationFragment(finalHost)
+            .commit()
     }
 
 }
