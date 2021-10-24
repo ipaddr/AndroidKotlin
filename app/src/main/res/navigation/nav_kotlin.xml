@@ -37,4 +37,8 @@
         android:name="com.example.androidkotlin.day2.customview.CustomViewFragment"
         android:label="fragment_custom_view"
         tools:layout="@layout/fragment_custom_view" />
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="com.example.androidkotlin.day2.animation.AnimationFragment"
+        android:label="AnimationFragment" />
 </navigation>

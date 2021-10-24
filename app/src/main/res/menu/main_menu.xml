@@ -16,4 +16,8 @@
     <item
         android:id="@+id/customViewFragment"
         android:title="Custom View"/>
+
+    <item
+        android:id="@+id/animationFragment"
+        android:title="Animation"/>
 </menu>

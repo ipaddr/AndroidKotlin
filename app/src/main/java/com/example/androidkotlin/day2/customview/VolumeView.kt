@@ -40,7 +40,7 @@ public class VolumeView @JvmOverloads constructor(
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
         textAlign = Paint.Align.CENTER
-        textSize = 60.0f
+        textSize = 55.0f
         typeface = Typeface.create("", Typeface.BOLD)
     }
 
