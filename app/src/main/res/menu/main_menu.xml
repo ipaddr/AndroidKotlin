@@ -13,4 +13,7 @@
     <item
         android:id="@+id/navHelloWorld"
         android:title="Hello World Module"/>
+    <item
+        android:id="@+id/customViewFragment"
+        android:title="Custom View"/>
 </menu>

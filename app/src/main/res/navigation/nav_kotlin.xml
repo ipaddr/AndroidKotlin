@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_kotlin"
     app:startDestination="@id/mainFragment">
     <include app:graph="@navigation/nav_hello_world"/>
@@ -31,4 +32,9 @@
         android:id="@+id/navDynamic"
         app:moduleName="dynamicfeature"
         app:graphResName="nav_dynamic"/>
+    <fragment
+        android:id="@+id/customViewFragment"
+        android:name="com.example.androidkotlin.day2.customview.CustomViewFragment"
+        android:label="fragment_custom_view"
+        tools:layout="@layout/fragment_custom_view" />
 </navigation>

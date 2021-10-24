@@ -36,4 +36,9 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_dynamicfeature">Dynamic Module</string>
 
+    <!-- Custom View Volume -->
+    <string name="volume_off">off</string>
+    <string name="volume_low">1</string>
+    <string name="volume_medium">2</string>
+    <string name="volume_high">3</string>
 </resources>

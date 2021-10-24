@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VolumeView">
+        <attr name="volColor1" format="color"/>
+        <attr name="volColor2" format="color"/>
+        <attr name="volColor3" format="color"/>
+    </declare-styleable>
+</resources>
