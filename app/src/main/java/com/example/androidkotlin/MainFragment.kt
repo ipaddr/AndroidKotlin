@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.example.androidkotlin.databinding.FragmentMainBinding
+import com.example.androidkotlin.day3.delegation.*
 
 
 open class MainFragment : Fragment() {
@@ -30,9 +31,27 @@ open class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        delegationExample()
+        testListWithRecovery()
         binding.buttonMain.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToCekSaldoFragment()
             findNavController().navigate(action)
         }
+    }
+
+    private fun delegationExample(){
+        val cekSaldo = CekSaldoImpl("Rp. 1.000.000,-")
+        val transfer = TransferImpl("Iip Permana", "Rp. 1.000.000,-")
+        val mobileBankingApps = MobileBankingApps(cekSaldo, transfer)
+        mobileBankingApps.executeFunctionCekSaldo()
+        mobileBankingApps.executeFunctionTransfer()
+    }
+
+    private fun testListWithRecovery(){
+        val someList = ListWithTrash<String>(mutableListOf("satu", "dua", "tiga", "empat", "lima"))
+        someList.remove("dua")
+        Log.d("TAG", someList.toString())
+        someList.add(1, someList.recover().toString())
+        Log.d("TAG", someList.toString())
     }
 }
