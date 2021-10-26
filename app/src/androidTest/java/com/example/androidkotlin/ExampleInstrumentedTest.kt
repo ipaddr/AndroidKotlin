@@ -50,7 +50,7 @@ class ExampleInstrumentedTest {
         }
 
         // Verify that performing a click changes the NavController’s state
-        Espresso.onView(ViewMatchers.withText("View Balanc")).check(ViewAssertions.matches(
+        Espresso.onView(ViewMatchers.withText("View Balance")).check(ViewAssertions.matches(
             ViewMatchers.isDisplayed()));
     }
 }

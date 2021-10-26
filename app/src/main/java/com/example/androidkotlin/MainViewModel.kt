@@ -46,4 +46,8 @@ class MainViewModel(): ViewModel() {
         nextMessage.postValue("cancel function execute with param ${transferAmount}")
     }
     // endregion
+
+    //region day 3
+    var day3Argument: String = ""
+    //endregion
 }

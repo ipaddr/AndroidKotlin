@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_day3"
+    app:startDestination="@id/day3Fragment">
+
+    <fragment
+        android:id="@+id/day3Fragment"
+        android:name="com.example.androidkotlin.day3.delegation.Day3Fragment"
+        android:label="Day3Fragment" >
+        <action
+            android:id="@+id/action_day3Fragment_to_argumentWithoutDelegateFragment2"
+            app:destination="@id/argumentWithoutDelegateFragment" />
+        <action
+            android:id="@+id/action_day3Fragment_to_argumentWithDelegateFragment2"
+            app:destination="@id/argumentWithDelegateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/argumentWithoutDelegateFragment"
+        android:name="com.example.androidkotlin.day3.delegation.ui.ArgumentWithoutDelegateFragment"
+        android:label="ArgumentWithoutDelegateFragment" >
+        <argument
+            android:name="param1"
+            app:argType="string" />
+        <argument
+            android:name="param2"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/argumentWithDelegateFragment"
+        android:name="com.example.androidkotlin.day3.delegation.ui.ArgumentWithDelegateFragment"
+        android:label="ArgumentWithDelegateFragment" >
+        <argument
+            android:name="param1"
+            app:argType="string" />
+        <argument
+            android:name="param2"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/cekSaldoFragment"
         android:title="Cek Saldo" />
@@ -23,4 +22,7 @@
     <item
         android:id="@+id/customCircleFragment"
         android:title="Circle Fragment"/>
+    <item
+        android:id="@+id/nav_day3"
+        android:title="Day 3"/>
 </menu>

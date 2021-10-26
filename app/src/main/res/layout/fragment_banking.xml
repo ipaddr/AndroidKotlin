@@ -38,4 +38,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_send_money" />
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="138dp"
+        android:layout_height="84dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="458dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

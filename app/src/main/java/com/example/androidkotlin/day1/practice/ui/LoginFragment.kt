@@ -38,6 +38,8 @@ class LoginFragment: Fragment() {
             Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
             if (it.status)
                 findNavController().popBackStack()
+
+            binding.username
         })
     }
 

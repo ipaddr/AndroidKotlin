@@ -1,4 +1,4 @@
-package com.example.androidkotlin
+package com.example.androidkotlin.day3.delegation
 
 class ListWithTrash<E>(
     private val innerList: MutableList<E> = ArrayList<E>()
