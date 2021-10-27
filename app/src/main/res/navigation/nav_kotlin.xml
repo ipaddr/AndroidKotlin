@@ -46,4 +46,8 @@
         android:id="@+id/customCircleFragment"
         android:name="com.example.androidkotlin.day2.practice.CustomCircleFragment"
         android:label="CustomCircleFragment" />
+    <fragment
+        android:id="@+id/coroutineFragment"
+        android:name="com.example.androidkotlin.day3.coroutine.CoroutineFragment"
+        android:label="CoroutineFragment" />
 </navigation>

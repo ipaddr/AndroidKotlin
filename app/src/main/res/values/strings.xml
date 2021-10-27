@@ -41,4 +41,6 @@
     <string name="volume_low">1</string>
     <string name="volume_medium">2</string>
     <string name="volume_high">3</string>
+
+    <string name="click_to_start">Click to Start</string>
 </resources>

@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/day3Fragment"
-        android:name="com.example.androidkotlin.day3.delegation.Day3Fragment"
+        android:name="com.example.androidkotlin.day3.Day3Fragment"
         android:label="Day3Fragment" >
         <action
             android:id="@+id/action_day3Fragment_to_argumentWithoutDelegateFragment2"

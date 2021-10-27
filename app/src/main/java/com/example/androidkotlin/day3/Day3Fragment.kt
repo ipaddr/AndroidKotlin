@@ -1,5 +1,6 @@
-package com.example.androidkotlin.day3.delegation
+package com.example.androidkotlin.day3
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.navigation.navGraphViewModels
 import com.example.androidkotlin.MainViewModel
 import com.example.androidkotlin.R
 import com.example.androidkotlin.databinding.FragmentDay3Binding
+import com.example.androidkotlin.day3.coroutine.CoroutineActivity
 
 
 class Day3Fragment: Fragment() {
@@ -42,6 +44,11 @@ class Day3Fragment: Fragment() {
             val param2 = "Param dua with delegate"
             val action = Day3FragmentDirections.actionDay3FragmentToArgumentWithDelegateFragment2(param1, param2)
             findNavController().navigate(action)
+        }
+
+        binding.coroutine.setOnClickListener {
+//            startActivity(Intent(requireActivity(), CoroutineActivity::class.java))
+            findNavController().navigate(R.id.coroutineFragment)
         }
     }
 }
