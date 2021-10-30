@@ -5,7 +5,9 @@ import com.example.androidkotlin.day4.paging.coroutine.flow.model.User
 import com.example.androidkotlin.day4.paging.coroutine.flow.room.UserDao
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 
 class UserRepository private constructor(
     private val userDao: UserDao,
@@ -25,11 +27,15 @@ class UserRepository private constructor(
     }
 
     val users: Flow<List<User>> get() = userDao.getUsers()
+        .map { users ->
+            users.filter { user -> user.id > 5 }
+        }
 
     suspend fun fetchRecentUsers() {
-        val users = usersService.allUsers()
-        userDao.deleteAll()
-        userDao.insertAll(users)
+        usersService.allUsers().collect{ users ->
+            userDao.deleteAll()
+            userDao.insertAll(users)
+        }
     }
 
 }

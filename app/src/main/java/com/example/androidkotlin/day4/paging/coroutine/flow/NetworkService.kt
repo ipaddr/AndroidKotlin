@@ -2,6 +2,8 @@ package com.example.androidkotlin.day4.paging.coroutine.flow
 
 import com.example.androidkotlin.day4.paging.coroutine.flow.model.User
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -18,9 +20,10 @@ class NetworkService {
 
     private val usersService = retrofit.create(UsersService::class.java)
 
-    suspend fun allUsers(): List<User> = withContext(Dispatchers.IO){
+    suspend fun allUsers(): Flow<List<User>> = flow{
         val result = usersService.getUsers()
         result.shuffled()
+        emit(result)
     }
 }
 
