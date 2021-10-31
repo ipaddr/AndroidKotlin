@@ -37,7 +37,8 @@ class GithubSearchRepositoryFragment: Fragment() {
     ): View? {
         binding = FragmentGithubSearchRepositoryBinding.inflate(inflater, container, false)
 
-        viewModel = ViewModelProvider(requireActivity(), Injection.provideViewModelFactory(owner = this))
+        viewModel = ViewModelProvider(requireActivity()
+            , Injection.provideViewModelFactory(context = requireActivity() ,owner = this))
             .get(SearchRepositoriesViewModel::class.java)
 
         decorator = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)

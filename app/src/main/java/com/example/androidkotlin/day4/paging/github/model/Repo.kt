@@ -16,10 +16,13 @@
 
 package com.example.androidkotlin.day4.paging.github.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "repos")
 data class Repo(
-    @field:SerializedName("id") val id: Long,
+    @PrimaryKey  @field:SerializedName("id") val id: Long,
     @field:SerializedName("name") val name: String,
     @field:SerializedName("full_name") val fullName: String,
     @field:SerializedName("description") val description: String?,

@@ -16,20 +16,20 @@
 
 package com.example.androidkotlin.day4.paging.github
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.androidkotlin.day4.paging.github.api.GithubService
 import com.example.androidkotlin.day4.paging.github.data.GithubRepository
+import com.example.androidkotlin.day4.paging.github.db.RepoDatabase
 import com.example.androidkotlin.day4.paging.github.ui.ViewModelFactory
 
 object Injection {
-
-    private fun provideGithubRepository(): GithubRepository{
-        return GithubRepository(GithubService.create())
+    private fun provideGithubRepository(context: Context): GithubRepository {
+        return GithubRepository(GithubService.create(), RepoDatabase.getInstance(context))
     }
 
-    fun provideViewModelFactory(owner: SavedStateRegistryOwner): ViewModelProvider.Factory{
-        return ViewModelFactory(owner, provideGithubRepository())
+    fun provideViewModelFactory(context: Context, owner: SavedStateRegistryOwner): ViewModelProvider.Factory {
+        return ViewModelFactory(owner, provideGithubRepository(context))
     }
-
 }
