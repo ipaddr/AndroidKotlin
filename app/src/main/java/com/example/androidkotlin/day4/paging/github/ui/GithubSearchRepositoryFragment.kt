@@ -9,16 +9,19 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.distinctUntilChanged
+import androidx.lifecycle.*
 import androidx.lifecycle.map
+import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidkotlin.databinding.FragmentGithubSearchRepositoryBinding
 import com.example.androidkotlin.day4.paging.github.Injection
+import com.example.androidkotlin.day4.paging.github.model.Repo
 import com.example.androidkotlin.day4.paging.github.model.RepoSearchResult
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 class GithubSearchRepositoryFragment: Fragment() {
 
@@ -42,6 +45,7 @@ class GithubSearchRepositoryFragment: Fragment() {
 
         binding.bindState(
             uiState = viewModel.state,
+            pagingData = viewModel.pagingDataFlow,
             uiActions = viewModel.accept
         )
 
@@ -49,25 +53,28 @@ class GithubSearchRepositoryFragment: Fragment() {
     }
 
     private fun FragmentGithubSearchRepositoryBinding.bindState(
-        uiState: LiveData<UiState>,
+        uiState: StateFlow<UiState>,
+        pagingData: Flow<PagingData<Repo>>,
         uiActions: (UiAction) -> Unit
     ) {
         val repoAdapter = ReposAdapter()
-        list.adapter = repoAdapter
+        list.adapter = repoAdapter  
 
         bindSearch(
             uiState = uiState,
             onQueryChanged = uiActions
         )
+
         bindList(
             repoAdapter = repoAdapter,
             uiState = uiState,
+            pagingData = pagingData,
             onScrollChanged = uiActions
         )
     }
 
     private fun FragmentGithubSearchRepositoryBinding.bindSearch(
-        uiState: LiveData<UiState>,
+        uiState: StateFlow<UiState>,
         onQueryChanged: (UiAction.Search) -> Unit
     ) {
         searchRepo.setOnEditorActionListener { _, actionId, _ ->
@@ -87,10 +94,12 @@ class GithubSearchRepositoryFragment: Fragment() {
             }
         }
 
-        uiState
-            .map(UiState::query)
-            .distinctUntilChanged()
-            .observe(requireActivity(), searchRepo::setText)
+        lifecycleScope.launch {
+            uiState
+                .map { it.query }
+                .distinctUntilChanged()
+                .collect(searchRepo::setText)
+        }
     }
 
     private fun FragmentGithubSearchRepositoryBinding.updateRepoListFromInput(onQueryChanged: (UiAction.Search) -> Unit) {
@@ -104,55 +113,43 @@ class GithubSearchRepositoryFragment: Fragment() {
 
     private fun FragmentGithubSearchRepositoryBinding.bindList(
         repoAdapter: ReposAdapter,
-        uiState: LiveData<UiState>,
+        uiState: StateFlow<UiState>,
+        pagingData: Flow<PagingData<Repo>>,
         onScrollChanged: (UiAction.Scroll) -> Unit
     ) {
-        setupScrollListener(onScrollChanged)
-
-        uiState
-            .map(UiState::searchResult)
-            .distinctUntilChanged()
-            .observe(requireActivity()) { result ->
-                when (result) {
-                    is RepoSearchResult.Success -> {
-                        showEmptyList(result.data.isEmpty())
-                        repoAdapter.submitList(result.data)
-                    }
-                    is RepoSearchResult.Error -> {
-                        Toast.makeText(
-                            requireActivity(),
-                            "\uD83D\uDE28 Wooops $result.message}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
-            }
-    }
-
-    private fun FragmentGithubSearchRepositoryBinding.showEmptyList(show: Boolean) {
-        emptyList.isVisible = show
-        list.isVisible = !show
-    }
-
-    private fun FragmentGithubSearchRepositoryBinding.setupScrollListener(
-        onScrollChanged: (UiAction.Scroll) -> Unit
-    ) {
-        val layoutManager = list.layoutManager as LinearLayoutManager
         list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val totalItemCount = layoutManager.itemCount
-                val visibleItemCount = layoutManager.childCount
-                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-
-                onScrollChanged(
-                    UiAction.Scroll(
-                        visibleItemCount = visibleItemCount,
-                        lastVisibleItemPosition = lastVisibleItem,
-                        totalItemCount = totalItemCount
-                    )
-                )
+                if (dy != 0) onScrollChanged(UiAction.Scroll(currentQuery = uiState.value.query))
             }
         })
+
+        val notLoading = repoAdapter.loadStateFlow
+            // Only emit when REFRESH LoadState for the paging source changes.
+            .distinctUntilChangedBy { it.source.refresh }
+            // Only react to cases where REFRESH completes i.e., NotLoading.
+            .map { it.source.refresh is LoadState.NotLoading }
+
+        val hasNotScrolledForCurrentSearch = uiState
+            .map { it.hasNotScrolledForCurrentSearch }
+            .distinctUntilChanged()
+
+        val shouldScrollToTop = combine(
+            notLoading,
+            hasNotScrolledForCurrentSearch,
+            Boolean::and
+        )
+            .distinctUntilChanged()
+
+        lifecycleScope.launch {
+            pagingData.collectLatest(repoAdapter::submitData)
+        }
+
+        lifecycleScope.launch {
+            shouldScrollToTop.collect { shouldScroll ->
+                if (shouldScroll) list.scrollToPosition(0)
+            }
+        }
+
     }
+
 }

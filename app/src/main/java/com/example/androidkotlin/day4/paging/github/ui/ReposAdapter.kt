@@ -17,11 +17,12 @@
 package com.example.androidkotlin.day4.paging.github.ui
 
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.androidkotlin.day4.paging.github.model.Repo
 
-class ReposAdapter: ListAdapter<Repo, RepoViewHolder>(REPO_COMPARATOR) {
+class ReposAdapter: PagingDataAdapter<Repo, RepoViewHolder>(REPO_COMPARATOR) {
 
 
     companion object {

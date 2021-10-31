@@ -31,6 +31,7 @@ buildscript {
         def work_version = '2.2.0'
         def navigation_component_version = '2.3.5'
         def okhttpLoggingInterceptorVersion = '4.9.0'
+        def paging_version = '3.0.1'
 
         libraries = [
                 // Kotlin standard library
@@ -63,6 +64,9 @@ buildscript {
 
                 // threading
                 "androidx.annotation:annotation:$annotations_version",
+
+                // paging
+                "androidx.paging:paging-runtime:$paging_version"
         ]
 
         arch_libraries = [

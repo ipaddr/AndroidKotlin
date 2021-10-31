@@ -17,6 +17,9 @@
 package com.example.androidkotlin.day4.paging.github.data
 
 import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.androidkotlin.day4.paging.github.api.GithubService
 import com.example.androidkotlin.day4.paging.github.api.IN_QUALIFIER
 import com.example.androidkotlin.day4.paging.github.model.Repo
@@ -26,63 +29,19 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val GITHUB_STRTING_PAGE_INDEX = 1
-
 class GithubRepository(private val service: GithubService) {
 
-    private val inMemoryCache = mutableListOf<Repo>()
-
-    private val searchResult = MutableSharedFlow<RepoSearchResult>(replay = 1)
-
-    private var lastRequestedPage = GITHUB_STRTING_PAGE_INDEX
-
-    private var isRequestedInProgress = false
+    fun getSearchResultStream(query: String): Flow<PagingData<Repo>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { GithubPagingSource(service, query) }
+        ).flow
+    }
 
     companion object {
-        const val NETWORK_PAGE_SIZE = 30
+        const val NETWORK_PAGE_SIZE = 50
     }
-
-    suspend fun getSearchResultStream(query: String): Flow<RepoSearchResult>{
-        Log.d("GithubRepository", "New query: $query")
-        lastRequestedPage = 1
-        inMemoryCache.clear()
-        requestAndSaveData(query)
-        return searchResult
-    }
-
-    suspend fun requestMore(query: String){
-        if (isRequestedInProgress) return
-        val successful = requestAndSaveData(query)
-        if (successful)
-            lastRequestedPage++
-    }
-
-    suspend fun requestAndSaveData(query: String): Boolean {
-        isRequestedInProgress = true
-        var succesfull = false
-
-        val apiQuery = query + IN_QUALIFIER
-        try {
-            val response = service.searchRepos(apiQuery, lastRequestedPage, NETWORK_PAGE_SIZE)
-            val repos = response.items ?: emptyList()
-            inMemoryCache.addAll(repos)
-            val reposByName = reposByName(query)
-            searchResult.emit(RepoSearchResult.Success(reposByName))
-            succesfull = true
-        } catch (exception: IOException){
-            searchResult.emit(RepoSearchResult.Error(exception))
-        } catch (exception: HttpException){
-            searchResult.emit(RepoSearchResult.Error(exception))
-        }
-        isRequestedInProgress = false
-        return succesfull
-    }
-
-    private fun reposByName(query: String): List<Repo> {
-        return inMemoryCache.filter {
-            it.name.contains(query, true) ||
-                    (it.description != null && it.description.contains(query, true))
-        }.sortedWith( compareByDescending<Repo> { it.stars }.thenBy { it.name })
-    }
-
 }
