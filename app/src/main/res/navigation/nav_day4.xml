@@ -3,10 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_day4"
-    app:startDestination="@id/userFragment">
+    app:startDestination="@id/day4Fragment">
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.androidkotlin.day4.paging.coroutine.flow.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/day4Fragment"
+        android:name="com.example.androidkotlin.day4.Day4Fragment"
+        android:label="Day4Fragment">
+        <action
+            android:id="@+id/action_day4Fragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_day4Fragment_to_githubSearchRepositoryFragment"
+            app:destination="@id/githubSearchRepositoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/githubSearchRepositoryFragment"
+        android:name="com.example.androidkotlin.day4.paging.github.ui.GithubSearchRepositoryFragment"
+        android:label="GithubSearchRepositoryFragment" />
 </navigation>

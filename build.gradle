@@ -30,6 +30,7 @@ buildscript {
         def truth_version = '1.0'
         def work_version = '2.2.0'
         def navigation_component_version = '2.3.5'
+        def okhttpLoggingInterceptorVersion = '4.9.0'
 
         libraries = [
                 // Kotlin standard library
@@ -58,6 +59,7 @@ buildscript {
                 "com.google.code.gson:gson:$gson_version",
                 "com.squareup.retrofit2:converter-gson:$retrofit_gson_version",
                 "com.squareup.retrofit2:retrofit:$retrofit_version",
+                "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingInterceptorVersion",
 
                 // threading
                 "androidx.annotation:annotation:$annotations_version",
@@ -125,7 +127,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
 
         // NOTE: Do not place your application dependencies here; they belong

@@ -2,6 +2,7 @@ package com.example.androidkotlin.day3.coroutine
 
 import com.google.gson.Gson
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
 
 private val DUMMY_RESULTS = listOf(
     "Hello, coroutines!",
@@ -37,8 +38,9 @@ class DummyNetworkInterceptor : Interceptor {
             .message("Bad server day")
             .body(
                 ResponseBody.create(
-                MediaType.get("application/json"),
-                gson.toJson(mapOf("cause" to "not sure"))))
+                    "application/json".toMediaType(),
+                    gson.toJson(mapOf("cause" to "not sure"))
+                ))
             .build()
     }
 
@@ -55,8 +57,9 @@ class DummyNetworkInterceptor : Interceptor {
             .message("OK")
             .body(
                 ResponseBody.create(
-                MediaType.get("application/json"),
-                gson.toJson(nextResult)))
+                    "application/json".toMediaType(),
+                    gson.toJson(nextResult)
+                ))
             .build()
     }
 }
