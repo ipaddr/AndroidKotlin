@@ -30,7 +30,7 @@ class PagingDataTransformTest {
 
     @Test
     fun differTransformsData() = testScope.runBlockingTest {
-        val data = PagingData.from(listOf(1, 2, 3, 4)).myHelperTransformFunction()
+        val data = PagingData.from(listOf(1, 2, 3, 4, 5, 6)).myHelperTransformFunction()
         val differ = AsyncPagingDataDiffer(
             diffCallback = MyDiffCallback(),
             updateCallback = NoopListCallback(),
@@ -43,6 +43,6 @@ class PagingDataTransformTest {
 
         // Wait for transforms and the differ to process all updates.
         advanceUntilIdle()
-        assertEquals(listOf(4, 16), differ.snapshot().items)
+        assertEquals(listOf(4, 16, 36), differ.snapshot().items)
     }
 }
