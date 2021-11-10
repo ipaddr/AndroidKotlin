@@ -105,15 +105,38 @@ class MainViewModel(): ViewModel() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun genKeyPair(){
+        /*
+         * Generate a new EC key pair entry in the Android Keystore by
+         * using the KeyPairGenerator API. The private key can only be
+         * used for signing or verification and only with SHA-256 or
+         * SHA-512 as the message digest.
+         */
+        val kpg: KeyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA)
+        kpg.initialize(1024)
 
+        kp = kpg.generateKeyPair()
     }
 
     fun encryptPubkey(text: String?){
+        if (TextUtils.isEmpty(text))
+            return
 
+        val plaintext: ByteArray = text!!.toByteArray()
+        val cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA1AndMGF1Padding")
+        cipher.init(Cipher.ENCRYPT_MODE, kp.public)
+        ciphertext = cipher.doFinal(plaintext)
+        cipherOnTextView.value = String(ciphertext, Charsets.UTF_8)
     }
 
     fun decryptPrivKey(){
+        if (ciphertext.isEmpty())
+            return
 
+        val cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA1AndMGF1Padding")
+        cipher.init(Cipher.DECRYPT_MODE, kp.private)
+        val ciphertext: ByteArray = cipher.doFinal(ciphertext)
+        val string = String(ciphertext)
+        decryptResultOnTextView.value = string
     }
 
     fun encryptPrivkey(){
