@@ -1,10 +1,24 @@
 package com.example.androidkotlin
 
+import android.os.Build
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
+import android.text.TextUtils
+import android.util.Log
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.androidkotlin.day1.practice.data.LoginInfo
 import com.example.androidkotlin.day1.practice.data.User
+import java.io.UTFDataFormatException
+import java.lang.StringBuilder
+import java.security.KeyPair
+import java.security.KeyPairGenerator
+import javax.crypto.Cipher
+import javax.crypto.KeyGenerator
+import javax.crypto.SecretKey
 
 class MainViewModel(): ViewModel() {
 
@@ -50,4 +64,65 @@ class MainViewModel(): ViewModel() {
     //region day 3
     var day3Argument: String = ""
     //endregion
+
+    // region day 8
+
+    // symmetric
+    lateinit var ciphertext: ByteArray
+    lateinit var keygen: KeyGenerator
+    lateinit var key: SecretKey
+    var cipherOnTextView = MutableLiveData<String>()
+    var decryptResultOnTextView = MutableLiveData<String>()
+
+    fun symmetricEncrypt(text: String?){
+        if (TextUtils.isEmpty(text))
+            return
+        val plaintext: ByteArray = text!!.toByteArray()
+        keygen = KeyGenerator.getInstance("AES")
+        keygen.init(256)
+        key = keygen.generateKey()
+        val cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING")
+        cipher.init(Cipher.ENCRYPT_MODE, key)
+        ciphertext = cipher.doFinal(plaintext)
+        cipherOnTextView.value = String(ciphertext, Charsets.UTF_8)
+    }
+
+    fun symmetricDecrypt(){
+        if (ciphertext.isEmpty())
+            return
+
+        val cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING")
+        cipher.init(Cipher.DECRYPT_MODE, key)
+        val ciphertext: ByteArray = cipher.doFinal(ciphertext)
+        val string = String(ciphertext)
+        decryptResultOnTextView.value = string
+    }
+
+
+
+    // asymmetric
+    lateinit var kp: KeyPair
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun genKeyPair(){
+
+    }
+
+    fun encryptPubkey(text: String?){
+
+    }
+
+    fun decryptPrivKey(){
+
+    }
+
+    fun encryptPrivkey(){
+
+    }
+
+    fun decryptPubKey(){
+
+    }
+
+    // endregion
 }

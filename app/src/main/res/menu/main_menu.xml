@@ -29,4 +29,8 @@
     <item
         android:id="@+id/nav_day4"
         android:title="Day 4"/>
+
+    <item
+        android:id="@+id/nav_day8"
+        android:title="Day 8"/>
 </menu>

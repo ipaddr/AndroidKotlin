@@ -9,20 +9,25 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/activity_navigation_component.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/activity_navigation_component_dynamic.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_animation.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_asymmetric_cryptography.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_banking.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_cek_saldo.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_coroutine.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_cryptography.xml" value="0.14673913043478262" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_custom_circle.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_custom_view.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_custom_volume.xml" value="0.14175724637681159" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_day3.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_day4.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_day7.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_day8.xml" value="0.16259057971014493" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_delegate_all.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_github_search_repository.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_main.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_main_navigation_component.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_second.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_symmetric_cryptography.xml" value="0.1921875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_transfer.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/fragment_user.xml" value="0.178125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AndroidKotlin/app/src/main/res/layout/github_search_repository_item.xml" value="0.1" />

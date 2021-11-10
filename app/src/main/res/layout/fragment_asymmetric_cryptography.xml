@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.androidkotlin.MainViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/encryptPub"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/genKey"
+                app:layout_constraintVertical_chainStyle="spread">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/beforeEncryptText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Plain Text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/encryptPub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Encrypt"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+                app:layout_constraintEnd_toStartOf="@+id/encryptPriv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/decryptPub"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/encryptPub">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/chiperText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ciper Text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/decryptPub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DecryptPub"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+                app:layout_constraintEnd_toStartOf="@+id/decryptPriv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/decryptPub">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/afterDecryptText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DecryptText" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/encryptPriv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EncryptPriv"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/encryptPub"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+            <Button
+                android:id="@+id/decryptPriv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="decryptPriv"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/decryptPub"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+            <Button
+                android:id="@+id/genKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="GenKey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

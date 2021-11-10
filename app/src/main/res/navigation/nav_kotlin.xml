@@ -7,6 +7,7 @@
     <include app:graph="@navigation/nav_hello_world"/>
     <include app:graph="@navigation/nav_day3"/>
     <include app:graph="@navigation/nav_day4"/>
+    <include app:graph="@navigation/nav_day8"/>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.androidkotlin.MainFragment"
